@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: rag-postgres
+    restart: unless-stopped
+    env_file:
+      - .env.local
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./lib/db/docker-init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+volumes:
+  pgdata:
