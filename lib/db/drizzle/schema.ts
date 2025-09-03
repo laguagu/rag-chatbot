@@ -34,7 +34,7 @@ export const documentChunks = pgTable(
     index("document_chunks_doc_id_idx").on(table.docId),
     // GIN index for metadata queries
     index("document_chunks_metadata_idx").using("gin", table.metadata),
-  ]
+  ],
 );
 
 // Legacy alias for backward compatibility
@@ -61,5 +61,5 @@ export const uploadedFiles = pgTable(
     index("uploaded_files_doc_id_idx").on(table.docId),
     index("uploaded_files_filename_idx").on(table.filename),
     index("uploaded_files_created_at_idx").on(table.createdAt),
-  ]
+  ],
 );

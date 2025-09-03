@@ -109,5 +109,3 @@ export function createWriterHelpers(writer: Writer) {
     injectRagContext,
   } as const;
 }
-
-

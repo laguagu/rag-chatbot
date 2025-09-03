@@ -74,7 +74,7 @@ export async function POST(req: NextRequest) {
             embedding,
             5,
             typeof minSimilarity === "number" ? minSimilarity : 0.3,
-            selectedDocIds
+            selectedDocIds,
           );
 
           if (sources.length === 0) {
@@ -86,7 +86,7 @@ export async function POST(req: NextRequest) {
               "search",
               "Vector search",
               `${sources.length} results`,
-              80
+              80,
             );
 
             // 3) Stream sources (persistent parts)

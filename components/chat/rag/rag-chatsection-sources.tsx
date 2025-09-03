@@ -1,6 +1,12 @@
 "use client";
 
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { ExternalLink, FileText, Globe } from "lucide-react";
 import { useMemo, useState } from "react";
 
@@ -31,7 +37,9 @@ export function RagChatSectionSources({ sources }: { sources: SourceItem[] }) {
         {items.map((s, idx) => {
           const domain = (() => {
             try {
-              return s.url ? new URL(s.url).hostname.replace(/^www\./, "") : undefined;
+              return s.url
+                ? new URL(s.url).hostname.replace(/^www\./, "")
+                : undefined;
             } catch {
               return undefined;
             }
@@ -54,9 +62,13 @@ export function RagChatSectionSources({ sources }: { sources: SourceItem[] }) {
                   )}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="truncate font-medium text-sm leading-snug">{s.title}</div>
+                  <div className="truncate font-medium text-sm leading-snug">
+                    {s.title}
+                  </div>
                   {domain && (
-                    <div className="truncate text-xs text-green-700/70 dark:text-green-200/70">{domain}</div>
+                    <div className="truncate text-xs text-green-700/70 dark:text-green-200/70">
+                      {domain}
+                    </div>
                   )}
                 </div>
                 {typeof s.similarity === "number" && (
@@ -76,22 +88,30 @@ export function RagChatSectionSources({ sources }: { sources: SourceItem[] }) {
             <div>
               <DialogHeader>
                 <DialogTitle className="flex items-center gap-2">
-                  {active.url ? <Globe className="h-4 w-4" /> : <FileText className="h-4 w-4" />}
+                  {active.url ? (
+                    <Globe className="h-4 w-4" />
+                  ) : (
+                    <FileText className="h-4 w-4" />
+                  )}
                   {active.title}
                 </DialogTitle>
                 <DialogDescription>
                   {active.docId ? (
-                    <span className="text-xs text-slate-500">docId: {active.docId}</span>
+                    <span className="text-xs text-slate-500">
+                      docId: {active.docId}
+                    </span>
                   ) : null}
                   {active.filename ? (
-                    <span className="ml-2 text-xs text-slate-500">filename: {active.filename}</span>
+                    <span className="ml-2 text-xs text-slate-500">
+                      filename: {active.filename}
+                    </span>
                   ) : null}
                 </DialogDescription>
               </DialogHeader>
 
               {active.snippet && (
                 <pre className="mt-3 max-h-[50vh] overflow-auto whitespace-pre-wrap rounded-md bg-slate-50 dark:bg-slate-900/40 p-3 text-sm text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-800">
-{active.snippet}
+                  {active.snippet}
                 </pre>
               )}
 
@@ -112,5 +132,3 @@ export function RagChatSectionSources({ sources }: { sources: SourceItem[] }) {
     </div>
   );
 }
-
-

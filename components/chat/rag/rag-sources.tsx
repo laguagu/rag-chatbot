@@ -24,7 +24,9 @@ export function RagSourceChips({
     >
       <div className="flex items-center gap-2 mb-3">
         <FileText className="h-4 w-4 text-green-600 dark:text-green-400" />
-        <h4 className="font-semibold text-green-900 dark:text-green-100">Lähteet</h4>
+        <h4 className="font-semibold text-green-900 dark:text-green-100">
+          Lähteet
+        </h4>
         <span className="text-xs px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-200">
           {sources.length}
         </span>
@@ -34,7 +36,9 @@ export function RagSourceChips({
           {sources.map((s, idx) => {
             const domain = (() => {
               try {
-                return s.url ? new URL(s.url).hostname.replace(/^www\./, "") : undefined;
+                return s.url
+                  ? new URL(s.url).hostname.replace(/^www\./, "")
+                  : undefined;
               } catch {
                 return undefined;
               }

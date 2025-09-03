@@ -2,7 +2,12 @@
 
 import { cn } from "@/lib/utils";
 import type { UIMessage as MessageType } from "ai";
-import { ChevronUpIcon, MinusCircle, PaperclipIcon, PlusCircle } from "lucide-react";
+import {
+  ChevronUpIcon,
+  MinusCircle,
+  PaperclipIcon,
+  PlusCircle,
+} from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { Message, ThinkingMessage } from "./message";
@@ -159,7 +164,10 @@ export function ChatMessages({
               role={message.role as "user" | "assistant"}
               content={text}
               isLoading={false}
-              sources={getMessageSources(message).map((s: any) => ({ url: s.url, filename: s.title }))}
+              sources={getMessageSources(message).map((s: any) => ({
+                url: s.url,
+                filename: s.title,
+              }))}
             >
               {/* “Attached file:” tag */}
               {typeof text === "string" &&
@@ -200,7 +208,10 @@ export function ChatMessages({
 
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: isSourcesExpanded ? 1 : 0, height: isSourcesExpanded ? "auto" : 0 }}
+                    animate={{
+                      opacity: isSourcesExpanded ? 1 : 0,
+                      height: isSourcesExpanded ? "auto" : 0,
+                    }}
                     transition={{ duration: 0.25 }}
                     className="mt-3"
                   >

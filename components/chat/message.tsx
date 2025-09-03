@@ -23,7 +23,11 @@ function linkifyCitationsStrict(text: string, sources?: SourceItem[]) {
     const idx = Number(numStr) - 1;
     if (!Number.isFinite(idx) || idx < 0 || idx >= sources.length) return match;
     const s = sources[idx];
-    const href = s.url || (s.filename ? `/api/files/get?filename=${encodeURIComponent(s.filename)}` : "");
+    const href =
+      s.url ||
+      (s.filename
+        ? `/api/files/get?filename=${encodeURIComponent(s.filename)}`
+        : "");
     if (!href) return match;
     return `[Source ${numStr}](${href})`;
   });
@@ -31,7 +35,13 @@ function linkifyCitationsStrict(text: string, sources?: SourceItem[]) {
   return linked.replace(/\)\[/g, ") [");
 }
 
-function PureMessage({ role, content, isLoading, children, sources }: MessageProps) {
+function PureMessage({
+  role,
+  content,
+  isLoading,
+  children,
+  sources,
+}: MessageProps) {
   const isUser = role === "user";
   const display = linkifyCitationsStrict(content, sources);
 
@@ -73,7 +83,8 @@ function PureMessage({ role, content, isLoading, children, sources }: MessagePro
 export const Message = memo(PureMessage, (prevProps, nextProps) => {
   if (prevProps.isLoading !== nextProps.isLoading) return false;
   if (prevProps.content !== nextProps.content) return false;
-  if ((prevProps.sources?.length || 0) !== (nextProps.sources?.length || 0)) return false;
+  if ((prevProps.sources?.length || 0) !== (nextProps.sources?.length || 0))
+    return false;
   if (prevProps.children !== nextProps.children) return false;
   return true;
 });
