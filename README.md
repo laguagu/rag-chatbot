@@ -24,7 +24,7 @@ This is a chatbot that can answer questions based on documents you upload. It us
 ### What you need
 
 - Node.js 18+
-- PNPM package manager
+- PNPM package manager (or npm)
 - OpenAI API key
 - Docker (for PostgreSQL database)
 
@@ -189,3 +189,16 @@ flowchart TD
 ```
 
 Note: Showing sources is optional. You can add it later once the basic flow works.
+
+---
+
+## 🛠️ Helpful Resources for Building RAG Chatbots
+
+### UI Components for AI Chat
+
+- [21st.dev AI Chat Components](https://21st.dev/s/ai-chat) - Ready-to-use chat UI components
+- [Vercel AI SDK Elements](https://ai-sdk.dev/elements/overview) - Official AI UI elements
+
+### Simple RAG Tutorial
+
+- [Node.js RAG Chatbot Tutorial](https://ai-sdk.dev/cookbook/node/retrieval-augmented-generation) - Step-by-step guide for building a RAG chatbot with Node.js
